@@ -1,5 +1,5 @@
 [package]
-name = "bullshit-theorems"
+name = "typst-theorems"
 version = "1.0.0"
 entrypoint = "theorems.typ"
 authors = ["Mattia Oldani"]
