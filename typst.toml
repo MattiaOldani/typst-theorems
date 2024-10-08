@@ -1,0 +1,8 @@
+[package]
+name = "bullshit-theorems"
+version = "1.0.0"
+entrypoint = "theorems.typ"
+authors = ["Mattia Oldani"]
+license = "Unlicense"
+description = "A bullshit template, do not use it"
+repository = "https://github.com/MattiaOldani/typst-theorems"
