@@ -1,4 +1,4 @@
-// SETUP DEGLI ELEMENTI
+// Setup
 
 #let thmcounters = state(
   "thm",
@@ -279,41 +279,41 @@
 }
 
 
-// DEFINIZIONE EFFETTIVA DEGLI ELEMENTI
+// Elementi
 
 #let theorem = thmbox(
   "teorema",
   "Teorema",
-  fill: rgb("#eeffee"),
+  fill: rgb("#F6A7C1"),
 ).with(numbering: none)
 
 #let corollary = thmbox(
   "corollario",
   "Corollario",
   base: "teorema",
-  fill: rgb("#eeffee"),
+  fill: rgb("#F6A7C1"),
 ).with(numbering: none)
 
 #let lemma = thmbox(
   "lemma",
   "Lemma",
-  fill: rgb("#eeffee"),
+  fill: rgb("#F6A7C1"),
 ).with(numbering: none)
 
 #let definition = thmbox(
   "definizione",
   "Definizione",
-  fill: rgb("#d0ffff"),
+  fill: rgb("#FFF4B1"),
 ).with(numbering: none)
 
 #let example = thmbox(
   "esempio",
   "Esempio",
-  fill: rgb("#fadadd"),
+  fill: rgb("#A7E8BD"),
 ).with(numbering: none)
 
 #let proof = thmproof(
   "dimostrazione",
   "Dimostrazione",
-  fill: rgb("#eeffee"),
+  fill: rgb("#A1C6EA"),
 ).with(numbering: none)
