@@ -2,7 +2,7 @@
 
 ## My version
 
-A fucking terrible `numbering: none` theorem environments.
+A fucking terrible theorem environments.
 
 ## Sahasatvik version
 
