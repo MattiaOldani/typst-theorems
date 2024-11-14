@@ -40,11 +40,12 @@
     }
 
     if number == auto and numbering != none {
-      result = locate(loc => {
+      result = context {
+        let heading-counter = counter(heading).get()
         return thmcounters.update(thmpair => {
           let counters = thmpair.at("counters")
 
-          counters.at("heading") = counter(heading).at(loc)
+          counters.at("heading") = heading-counter
 
           if not identifier in counters.keys() {
             counters.insert(identifier, (0,))
@@ -81,11 +82,11 @@
             "latest": latest,
           )
         })
-      })
+      }
 
-      number = thmcounters.display(x => {
-        return global_numbering(numbering, ..x.at("latest"))
-      })
+      number = context {
+        global_numbering(numbering, ..thmcounters.get().at("latest"))
+      }
     }
 
     return figure(
@@ -161,9 +162,11 @@
 
 #let thm-qed-done = state("thm-qed-done", false)
 
+#let thm-qed-symbol = state("thm-qed-symbol", $qed$)
+
 #let thm-qed-show = {
-  thm-qed-done.update("thm-qed-symbol")
-  thm-qed-done.display()
+  thm-qed-done.update(true)
+  context [#thm-qed-symbol.get()]
 }
 
 #let qedhere = metadata("thm-qedhere")
@@ -196,12 +199,12 @@
 #let proof-bodyfmt(body) = {
   thm-qed-done.update(false)
   body
-  locate(loc => {
-    if thm-qed-done.at(loc) == false {
+  context {
+    if thm-qed-done.at(here()) == false {
       h(1fr)
       thm-qed-show
     }
-  })
+  }
 }
 
 
@@ -215,6 +218,8 @@
 
 #let thmrules(qed-symbol: $qed$, doc) = {
 
+  show figure.where(kind: "thmenv"): set block(breakable: true)
+  show figure.where(kind: "thmenv"): set align(start)
   show figure.where(kind: "thmenv"): it => it.body
 
   show ref: it => {
@@ -237,7 +242,7 @@
     }
 
     let loc = it.element.location()
-    let thms = query(selector(<meta:thmenvcounter>).after(loc), loc)
+    let thms = query(selector(<meta:thmenvcounter>).after(loc))
     let number = thmcounters.at(thms.first().location()).at("latest")
 
     return link(
@@ -273,7 +278,7 @@
     it
   }
 
-  show "thm-qed-symbol": qed-symbol
+  thm-qed-symbol.update(qed-symbol)
 
   doc
 }
