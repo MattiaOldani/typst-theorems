@@ -10,7 +10,6 @@
 
 
 #let thmenv(identifier, base, base_level, fmt) = {
-
   let global_numbering = numbering
 
   return (
@@ -90,8 +89,10 @@
     }
 
     return figure(
-      result +  // hacky!
-      fmt(name, number, body, ..args.named()) + [#metadata(identifier) <meta:thmenvcounter>],
+      result
+        + // hacky!
+        fmt(name, number, body, ..args.named())
+        + [#metadata(identifier) <meta:thmenvcounter>],
       kind: "thmenv",
       outlined: false,
       caption: name,
@@ -108,7 +109,7 @@
   ..blockargs,
   supplement: auto,
   padding: (top: 0.5em, bottom: 0.5em),
-  namefmt: x => [(#x)],
+  namefmt: x => [(#emph(x))],
   titlefmt: strong,
   bodyfmt: x => x,
   separator: [#h(0.1em):#h(0.2em)],
@@ -155,7 +156,7 @@
     identifier,
     base,
     base_level,
-    boxfmt
+    boxfmt,
   ).with(supplement: supplement)
 }
 
@@ -217,7 +218,6 @@
 
 
 #let thmrules(qed-symbol: $qed$, doc) = {
-
   show figure.where(kind: "thmenv"): set block(breakable: true)
   show figure.where(kind: "thmenv"): set align(start)
   show figure.where(kind: "thmenv"): it => it.body
@@ -292,6 +292,13 @@
   fill: rgb("#F9C8D5"),
 )
 
+#let theorem-proof = thmproof(
+  "dimostrazione",
+  "Dimostrazione",
+  base: "teorema",
+  fill: rgb("#CDE5F7"),
+)
+
 #let corollary = thmbox(
   "corollario",
   "Corollario",
@@ -299,10 +306,24 @@
   fill: rgb("#F9C8D5"),
 )
 
+#let corollary-proof = thmproof(
+  "dimostrazione",
+  "Dimostrazione",
+  base: "corollario",
+  fill: rgb("#CDE5F7"),
+)
+
 #let lemma = thmbox(
   "lemma",
   "Lemma",
   fill: rgb("#F9C8D5"),
+)
+
+#let lemma-proof = thmproof(
+  "dimostrazione",
+  "Dimostrazione",
+  base: "lemma",
+  fill: rgb("#CDE5F7"),
 )
 
 #let definition = thmbox(
@@ -315,10 +336,4 @@
   "esempio",
   "Esempio",
   fill: rgb("#C4ECD1"),
-)
-
-#let proof = thmproof(
-  "dimostrazione",
-  "Dimostrazione",
-  fill: rgb("#CDE5F7"),
 )
