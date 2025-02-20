@@ -337,3 +337,16 @@
   "Esempio",
   fill: rgb("#C4ECD1"),
 )
+
+#let exercise = thmbox(
+  "esercizio",
+  "Esercizio",
+  fill: rgb("#C4ECD1"),
+)
+
+#let solution = thmproof(
+  "soluzione",
+  "Soluzione",
+  base: "esercizio",
+  fill: rgb("#DFFFE0"),
+)
