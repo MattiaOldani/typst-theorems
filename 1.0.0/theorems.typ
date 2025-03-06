@@ -344,9 +344,15 @@
   fill: rgb("#C4ECD1"),
 )
 
+#let request = thmbox(
+  "richiesta",
+  "Richiesta",
+  fill: rgb("#C4ECD1"),
+)
+
 #let solution = thmproof(
   "soluzione",
   "Soluzione",
-  base: "esercizio",
+  base: "richiesta",
   fill: rgb("#DFFFE0"),
 )
