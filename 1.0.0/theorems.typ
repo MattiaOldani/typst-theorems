@@ -341,18 +341,19 @@
 #let exercise = thmbox(
   "esercizio",
   "Esercizio",
-  fill: rgb("#C4ECD1"),
+  fill: rgb("#53EC53"),
 )
 
 #let request = thmbox(
   "richiesta",
   "Richiesta",
+  base: "esercizio",
   fill: rgb("#C4ECD1"),
 )
 
-#let solution = thmproof(
+#let solution = thmbox(
   "soluzione",
   "Soluzione",
-  base: "richiesta",
+  base: "esercizio",
   fill: rgb("#DFFFE0"),
 )
